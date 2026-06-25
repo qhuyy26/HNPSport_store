@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html class="light" lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>HNP Sport | Elite Performance Gear</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-secondary-container": "#616363",
+                        "secondary": "#5d5f5f",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e6e1df",
+                        "error": "#ba1a1a",
+                        "tertiary": "#000000",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "surface-container-high": "#e9e8e7",
+                        "on-tertiary-container": "#868381",
+                        "on-secondary-fixed-variant": "#454747",
+                        "surface": "#fbf9f9",
+                        "surface-container-low": "#f5f3f3",
+                        "secondary-container": "#dfe0e0",
+                        "on-tertiary-fixed-variant": "#484645",
+                        "on-background": "#1b1c1c",
+                        "inverse-primary": "#c8c6c5",
+                        "primary-container": "#1c1b1b",
+                        "on-primary-fixed-variant": "#474646",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-variant": "#e3e2e2",
+                        "inverse-surface": "#303031",
+                        "on-tertiary-fixed": "#1d1b1a",
+                        "surface-tint": "#5f5e5e",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary-container": "#1d1b1a",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "primary": "#111111",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-primary-container": "#858383",
+                        "tertiary-fixed-dim": "#cac6c3",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dbdad9",
+                        "surface-container": "#efeded",
+                        "background": "#fbf9f9",
+                        "outline": "#747878"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "16px",
+                        "xl": "24px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Be Vietnam Pro"],
+                        "display-xl": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "headline-sm": ["Be Vietnam Pro"],
+                        "label-md": ["Be Vietnam Pro"]
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Boxicons CDN for icons used in core values -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(251, 249, 249, 0.8);
+        }
+        .dark .glass-nav {
+            background: rgba(27, 28, 28, 0.8);
+        }
+        .kinetic-hover {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .kinetic-hover:hover {
+            transform: scale(1.02);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(251,249,249,0) 0%, rgba(251,249,249,1) 100%);
+        }
+    </style>
+
+    <!-- React and Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden">
+    <div id="root"></div>
+
+    <script type="text/babel">
+    const { useState, useEffect, useContext, useRef, useCallback, useMemo } = React;
+        const { createRoot } = ReactDOM;
+    const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation, useParams } = ReactRouterDOM;
+
+        // --- Common Components ---
+
+        // --- Lightweight Cart Context (localStorage persisted)
+        const CartContext = React.createContext({});
+
+        const CartProvider = ({ children }) => {
+            const [items, setItems] = useState(() => {
+                try {
+                    const raw = localStorage.getItem('hnp_cart');
+                    return raw ? JSON.parse(raw) : {};
+                } catch (e) {
+                    return {};
+                }
+            });
+
+            useEffect(() => {
+                localStorage.setItem('hnp_cart', JSON.stringify(items));
+            }, [items]);
+
+            const addToCart = useCallback((productId, qty = 1) => {
+                setItems(prev => {
+                    const next = { ...prev };
+                    next[productId] = (next[productId] || 0) + qty;
+                    return next;
+                });
+            }, []);
+
+            const removeFromCart = useCallback((productId, qty = 1) => {
+                setItems(prev => {
+                    const next = { ...prev };
+                    if (!next[productId]) return prev;
+                    next[productId] = next[productId] - qty;
+                    if (next[productId] <= 0) delete next[productId];
+                    return next;
+                });
+            }, []);
+
+            const setQuantity = useCallback((productId, quantity) => {
+                setItems(prev => {
+                    const next = { ...prev };
+                    if (!quantity || quantity <= 0) {
+                        delete next[productId];
+                    } else {
+                        next[productId] = quantity;
+                    }
+                    return next;
+                });
+            }, []);
+
+            const clearCart = useCallback(() => setItems({}), []);
+
+            const count = Object.values(items).reduce((s, v) => s + v, 0);
+
+            const value = useMemo(() => ({ items, addToCart, removeFromCart, setQuantity, clearCart, count }), [items, addToCart, removeFromCart, setQuantity, clearCart, count]);
+
+            return (
+                <CartContext.Provider value={value}>
+                    {children}
+                </CartContext.Provider>
+            );
+        };
+
+        // --- Product dataset (15 items across adidas, nike, puma)
+        const PRODUCTS = [
+            // Adidas - Shirts
+            { id: 101, brand: 'adidas', category: 'Áo thể thao', name: 'Adidas Aeroready Tee', rating: 4.7, priceText: '599.000đ', image: 'IMG/AoDen.png' },
+            { id: 102, brand: 'adidas', category: 'Áo thể thao', name: 'Adidas Training Tee', rating: 4.6, priceText: '549.000đ', image: 'IMG/AoTrang.png' },
+            { id: 103, brand: 'adidas', category: 'Áo thể thao', name: 'Adidas Techfit Top', rating: 4.8, priceText: '799.000đ', image: 'IMG/AoDen.png' },
+            // Adidas - Legging
+            { id: 104, brand: 'adidas', category: 'Quần thể thao', name: 'Adidas TrueForm Legging', rating: 4.6, priceText: '749.000đ', image: 'IMG/quanDen.png' },
+            { id: 105, brand: 'adidas', category: 'Giày chạy bộ', name: 'Adidas Ultraboost Run', rating: 4.9, priceText: '3.200.000đ', image: 'IMG/Giay.png' },
+            // Nike
+            { id: 106, brand: 'nike', category: 'Áo thể thao', name: 'Nike Dri-FIT Tee', rating: 4.7, priceText: '599.000đ', image: 'IMG/AoTrang.png' },
+            { id: 107, brand: 'nike', category: 'Quần thể thao', name: 'Nike Pro Legging', rating: 4.8, priceText: '699.000đ', image: 'IMG/quanTrang.png' },
+            { id: 108, brand: 'nike', category: 'Giày chạy bộ', name: 'Nike Zoom Fly', rating: 4.8, priceText: '2.900.000đ', image: 'IMG/giayTrang.png' },
+            { id: 109, brand: 'nike', category: 'Áo thể thao', name: 'Nike Training Tank', rating: 4.5, priceText: '499.000đ', image: 'IMG/AoDen.png' },
+            { id: 110, brand: 'nike', category: 'Quần thể thao', name: 'Nike One Legging', rating: 4.6, priceText: '649.000đ', image: 'IMG/quanDen.png' },
+            // Puma
+            { id: 111, brand: 'puma', category: 'Áo thể thao', name: 'Puma Essentials Tee', rating: 4.4, priceText: '399.000đ', image: 'IMG/AoDen.png' },
+            { id: 112, brand: 'puma', category: 'Quần thể thao', name: 'Puma Studio Legging', rating: 4.5, priceText: '629.000đ', image: 'IMG/quanTrang.png' },
+            { id: 113, brand: 'puma', category: 'Giày chạy bộ', name: 'Puma Velocity Runner', rating: 4.6, priceText: '2.100.000đ', image: 'IMG/Giay.png' },
+            { id: 114, brand: 'puma', category: 'Áo thể thao', name: 'Puma Evostripe Tee', rating: 4.3, priceText: '459.000đ', image: 'IMG/AoTrang.png' },
+            { id: 115, brand: 'puma', category: 'Quần thể thao', name: 'Puma High-Waist Legging', rating: 4.6, priceText: '699.000đ', image: 'IMG/quanDen.png' },
+            // Áo khoác
+            { id: 116, brand: 'HNP Sport', category: 'Áo khoác', name: 'Áo khoác gió HNP SPORT', rating: 4.5, priceText: '1.299.000đ', image: 'IMG/Áo khoác gió HNP SPORT.png' },
+            { id: 117, brand: 'HNP Sport', category: 'Áo khoác', name: 'Áo khoác gió thể thao nam', rating: 4.5, priceText: '1.199.000đ', image: 'IMG/Áo khoác gió thể thao nam.png' },
+            { id: 118, brand: 'HNP Sport', category: 'Áo khoác', name: 'Áo khoác nữ tập GYM HNP SPORT', rating: 4.5, priceText: '1.000.000đ', image: 'IMG/Áo khoác nữ tập GYM HNP SPORT.png' },
+            { id: 119, brand: 'HNP Sport', category: 'Quần thể thao', name: 'Quần short thể thao nam xám', rating: 4.5, priceText: '499.000đ', image: 'IMG/Quần short thể thao nam xám.png' },
+
+            { id: 120, brand: 'HNP Sport', category: 'Phụ kiện', name: 'Băng cổ tay thể thao HNP Sport', rating: 4.5, priceText: '199.000đ', image: 'IMG/Băng cổ tay thể thao HNP Sport.png' },
+            { id: 121, brand: 'HNP Sport', category: 'Phụ kiện', name: 'Bình nước thể thao HNP Sport', rating: 4.5, priceText: '299.000đ', image: 'IMG/Bình nước thể thao HNP Sport.png' },
+            { id: 122, brand: 'HNP Sport', category: 'Dụng cụ', name: 'Combo Starter Pickleball', rating: 4.5, priceText: '5.000.000đ', image: 'IMG/Combo Starter Pickleball.png' },
+            { id: 123, brand: 'HNP Sport', category: 'Dụng cụ', name: 'Vợt Cầu Lông HNP SPORT', rating: 4.5, priceText: '750.000đ', image: 'IMG/Vợt Cầu Lông HNP SPORT.png' },
+            { id: 124, brand: 'HNP Sport', category: 'Phụ kiện', name: 'Mũ lưỡi trai HNP phong cách thể thao HNP Sport', rating: 4.5, priceText: '199.000đ', image: 'IMG/Mũ lưỡi trai HNP phong cách thể thao.png' },
+            { id: 125, brand: 'HNP Sport', category: 'Túi', name: 'Túi HNP SPORT', rating: 4.5, priceText: '899.000đ', image: 'IMG/Túi HNP SPORT.png' },
+            { id: 126, brand: 'HNP Sport', category: 'Phụ kiện', name: 'Bình nước giữ nhiệt HNP Sport', rating: 4.5, priceText: '400.000đ', image: 'IMG/PhuKien.png' },
+            { id: 127, brand: 'HNP Sport', category: 'Phụ kiện', name: 'Tất thể thao HNP Sport Màu đen, trắng, xám', rating: 4.5, priceText: '50.000đ', image: 'IMG/Tất thể thao HNP Sport Màu đen, trắng, xám.png' },
+            { id: 128, brand: 'HNP Sport', category: 'Phụ kiện', name: 'Tạ tay HNP Sport 10kg', rating: 4.5, priceText: '1.500.000đ', image: 'IMG/Tạ tay HNP Sport 10kg.png' }
+        ];
+
+        // --- Small reusable Map embed component
+        const MapEmbed = ({ query = '211 Lê Tấn Trung Sơn Trà Đà Nẵng', className = '' }) => (
+            <div className={className}>
+                <iframe
+                    title="HNP Sport - Địa điểm showroom"
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`}
+                    className="w-full h-full border-0"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        );
+
+        const Navbar = () => {
+            const [scrolled, setScrolled] = useState(false);
+            const location = useLocation();
+            const navigate = useNavigate();
+            const { count } = useContext(CartContext);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const navLinks = [
+                { name: 'Trang chủ', path: '/' },
+                { name: 'Về chúng tôi', path: '/about' },
+                { name: 'Bài viết', path: '/blog' },
+                { name: 'Sản phẩm', path: '/products' },
+                { name: 'Khuyến mãi', path: '/promotions' },
+                { name: 'Liên hệ', path: '/contact' }
+            ];
+
+            return (
+                <nav className={`fixed top-0 left-0 right-0 z-50 glass-nav border-b border-outline-variant/30 transition-all duration-300 h-20 ${scrolled ? 'shadow-md' : ''}`}>
+                    <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-full max-w-container-max mx-auto">
+                        <Link to="/" className="font-display-xl text-[24px] md:text-headline-sm font-black tracking-tighter text-primary uppercase italic">HNP Sport</Link>
+                        
+                        <div className="hidden lg:flex items-center gap-8">
+                            {navLinks.map(link => (
+                                <Link 
+                                    key={link.path} 
+                                    to={link.path} 
+                                    className={`font-bold hover:text-secondary transition-all ${location.pathname === link.path ? 'text-primary border-b-2 border-primary pb-1' : 'text-on-surface-variant'}`}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                            <button onClick={() => navigate('/products?focus=true')} className="material-symbols-outlined p-2 text-primary hover:scale-110 transition-all">search</button>
+                            <Link to="/cart" className="relative group cursor-pointer">
+                                <span className="material-symbols-outlined p-2 text-primary">shopping_bag</span>
+                                {count > 0 && (
+                                    <span className="absolute top-0 right-0 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">{count}</span>
+                                )}
+                            </Link>
+                            {/* registration intentionally not in main nav - accessible from Login only */}
+                            <Link to="/login" className="bg-primary text-white px-6 py-2 rounded-lg text-sm font-bold hover:scale-105 transition-all hidden md:block">
+                                Đăng nhập
+                            </Link>
+                            <button className="lg:hidden material-symbols-outlined p-2 text-primary">menu</button>
+                        </div>
+                    </div>
+                </nav>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-surface-container pt-24 pb-12 border-t border-outline-variant/30">
+                <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-20">
+                        <div>
+                            <div className="font-black text-3xl tracking-tighter uppercase text-primary italic mb-6">HNP Sport</div>
+                            <p className="text-secondary leading-relaxed mb-6">Đỉnh cao hiệu suất, phong cách thượng lưu. HNP Sport đồng hành cùng bạn trên mọi hành trình chinh phục.</p>
+                            <div className="flex gap-4">
+                                <a href="#" className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                    <span className="material-symbols-outlined text-[18px]">public</span>
+                                </a>
+                                <a href="#" className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                    <span className="material-symbols-outlined text-[18px]">photo_camera</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-8">Khám Phá</h4>
+                            <ul className="space-y-4">
+                                <li><Link to="/products" className="text-secondary hover:text-primary transition-colors">Sản phẩm mới</Link></li>
+                                <li><Link to="/promotions" className="text-secondary hover:text-primary transition-colors">Khuyến mãi</Link></li>
+                                <li><Link to="/about" className="text-secondary hover:text-primary transition-colors">Hệ thống cửa hàng</Link></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-8">Hỗ trợ khách hàng</h4>
+                            <ul className="space-y-4">
+                                <li><a href="#" className="text-secondary hover:text-primary transition-colors">Chính sách bảo mật</a></li>
+                                <li><a href="#" className="text-secondary hover:text-primary transition-colors">Điều khoản sử dụng</a></li>
+                                <li><Link to="/contact" className="text-secondary hover:text-primary transition-colors">Liên hệ hỗ trợ</Link></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-8">Liên hệ</h4>
+                            <ul className="space-y-4 text-secondary">
+                                <li className="flex items-center gap-3">
+                                    <span className="material-symbols-outlined text-[20px]">location_on</span>
+                                    <span>211 Lê Tấn Trung, Sơn Trà, Đà Nẵng</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <span className="material-symbols-outlined text-[20px]">call</span>
+                                    <span>1900 123 456</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <span className="material-symbols-outlined text-[20px]">mail</span>
+                                    <span>info@hnpsport.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="pt-12 border-t border-outline-variant/30 text-center">
+                        <p className="text-secondary text-sm">© 2024 HNP Sport. Đỉnh cao hiệu suất, phong cách thượng lưu.</p>
+                    </div>
+                </div>
+            </footer>
+        );
+
+        // --- Screen Components ---
+
+        // Screen 1: Login
+        const LoginPage = () => {
+            const [showPass, setShowPass] = useState(false);
+            const navigate = useNavigate();
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                alert('Mô phỏng: Đăng nhập thành công!');
+                navigate('/');
+            };
+
+            return (
+                <main className="relative min-h-screen flex items-center justify-center">
+                    <div className="absolute inset-0 z-0 overflow-hidden">
+                        <img className="w-full h-full object-cover opacity-10 filter grayscale contrast-125 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuJEY6lmaR_UuuHQKYrWG0F_s0IkTyHXawGMe6U6Z--uppJ48zyioQLQBKuXVS4QHe4fG7mplBQm3kRD_OR7v-xOkwOycM4kEQyplJvbylU1Ptja2Ri2zPJzhrghSczLULikQ-HpTgAhFqjNFuh_1Y9rN54RGV_BX5ZO8BS9lGSPlA_1yiHNOWTgopsFX573qGMETQJXdbxfIbDsJHgkICt0RRfu-yOSZZ0Pl-c8o1nV9ZvKyw5-G3yDMD-pEtUH68s2G_clEci9E6" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-surface via-transparent to-surface-bright"></div>
+                    </div>
+                    <div className="relative z-10 w-full max-w-[480px] px-margin-mobile md:px-0">
+                        <div className="bg-surface-container-lowest/80 backdrop-blur-2xl rounded-[32px] p-8 md:p-12 border border-outline-variant/30 shadow-2xl">
+                            <div className="text-center mb-10">
+                                <div className="mb-6 flex flex-col items-center">
+                                    <h1 className="text-[64px] font-extrabold leading-none tracking-tighter italic uppercase">HNP</h1>
+                                    <span className="text-[24px] font-bold leading-tight tracking-tight mt-[-8px]">Sport</span>
+                                </div>
+                                <p className="font-body-md text-on-surface-variant">Chào mừng trở lại. Vui lòng đăng nhập.</p>
+                            </div>
+                            <form className="space-y-6" onSubmit={handleSubmit}>
+                                <div className="space-y-4">
+                                    <div className="flex flex-col gap-2">
+                                        <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" htmlFor="email">Email</label>
+                                        <input className="w-full bg-surface-container-low border-b-2 border-outline-variant py-4 px-4 font-body-md focus:border-primary focus:ring-0 transition-all duration-300" id="email" placeholder="name@example.com" required type="email" />
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex justify-between items-center">
+                                            <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" htmlFor="password">Mật khẩu</label>
+                                            <a className="font-label-md text-label-md text-primary hover:underline" href="#">Quên mật khẩu?</a>
+                                        </div>
+                                        <div className="relative">
+                                            <input className="w-full bg-surface-container-low border-b-2 border-outline-variant py-4 px-4 font-body-md focus:border-primary focus:ring-0 transition-all duration-300" id="password" placeholder="••••••••" required type={showPass ? "text" : "password"} />
+                                            <button className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" type="button" onClick={() => setShowPass(!showPass)}>
+                                                <span className="material-symbols-outlined text-[20px]">{showPass ? 'visibility_off' : 'visibility'}</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button className="w-full bg-primary text-on-primary py-5 rounded-2xl font-label-md text-label-md uppercase tracking-[0.1em] kinetic-hover flex items-center justify-center gap-3 mt-4" type="submit">
+                                    <span>Đăng nhập</span>
+                                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                </button>
+                            </form>
+                            <div className="mt-12 text-center">
+                                <p className="font-body-md text-on-surface-variant">Bạn chưa có tài khoản? <Link to="/register" className="text-primary font-bold ml-1 hover:underline">Đăng ký ngay</Link></p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            );
+        };
+
+                // --- New: Register Page
+                const RegisterPage = () => {
+                    const [status, setStatus] = useState('Đăng ký');
+                    const [isSubmitting, setIsSubmitting] = useState(false);
+                    const [showPass, setShowPass] = useState(false);
+                    const [showConfirm, setShowConfirm] = useState(false);
+                    const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '', accept: false });
+                    const [errors, setErrors] = useState({});
+                    const navigate = useNavigate();
+
+                    const validate = () => {
+                        const e = {};
+                        if (!form.name || form.name.trim().length < 2) e.name = 'Vui lòng nhập họ tên hợp lệ';
+                        if (!form.email || !/^\S+@\S+\.\S+$/.test(form.email)) e.email = 'Email không hợp lệ';
+                        if (!form.password || form.password.length < 8) e.password = 'Mật khẩu cần >= 8 ký tự';
+                        if (form.password !== form.confirm) e.confirm = 'Mật khẩu không khớp';
+                        if (!form.accept) e.accept = 'Bạn phải đồng ý với điều khoản';
+                        setErrors(e);
+                        return Object.keys(e).length === 0;
+                    };
+
+                    const handleSubmit = (e) => {
+                        e.preventDefault();
+                        if (!validate()) return;
+                        setIsSubmitting(true);
+                        setStatus('ĐANG TẠO TÀI KHOẢN...');
+
+                        setTimeout(() => {
+                            try { localStorage.setItem('hnp_logged_in', 'true'); } catch (err) {}
+                            setStatus('TẠO THÀNH CÔNG');
+                            setTimeout(() => { setIsSubmitting(false); navigate('/'); }, 1000);
+                        }, 900);
+                    };
+
+                    return (
+                        <main className="relative min-h-screen flex items-center justify-center">
+                            <div className="absolute inset-0 z-0 overflow-hidden">
+                                <img className="w-full h-full object-cover opacity-10 filter grayscale contrast-125 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuJEY6lmaR_UuuHQKYrWG0F_s0IkTyHXawGMe6U6Z--uppJ48zyioQLQBKuXVS4QHe4fG7mplBQm3kRD_OR7v-xOkwOycM4kEQyplJvbylU1Ptja2Ri2zPJzhrghSczLULikQ-HpTgAhFqjNFuh_1Y9rN54RGV_BX5ZO8BS9lGSPlA_1yiHNOWTgopsFX573qGMETQJXdbxfIbDsJHgkICt0RRfu-yOSZZ0Pl-c8o1nV9ZvKyw5-G3yDMD-pEtUH68s2G_clEci9E6" />
+                                <div className="absolute inset-0 bg-gradient-to-tr from-surface via-transparent to-surface-bright"></div>
+                            </div>
+                            <div className="relative z-10 w-full max-w-[440px] px-6 md:px-0">
+                                <div className="bg-surface-container-lowest/80 backdrop-blur-2xl rounded-[20px] p-6 md:p-8 border border-outline-variant/30 shadow-lg">
+                                    <div className="text-center mb-8">
+                                            <div className="mb-6 flex flex-col items-center">
+                                            <h1 className="text-[48px] font-extrabold leading-none tracking-tighter italic uppercase">HNP</h1>
+                                            <span className="text-[18px] font-bold leading-tight tracking-tight mt-[-6px]">Sport</span>
+                                        </div>
+                                        <p className="font-body-md text-on-surface-variant">Tạo tài khoản mới để tiếp tục.</p>
+                                    </div>
+                                    <form className="space-y-6" onSubmit={handleSubmit}>
+                                        <div className="space-y-4">
+                                            <div className="flex flex-col gap-2">
+                                                <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" htmlFor="reg_name">Họ và tên</label>
+                                                <input id="reg_name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} className="w-full bg-surface-container-low border-b-2 border-outline-variant py-4 px-4 font-body-md focus:border-primary focus:ring-0 transition-all duration-300" placeholder="Nguyễn Văn A" required type="text" />
+                                                {errors.name && <div className="text-red-500 text-sm">{errors.name}</div>}
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" htmlFor="reg_email">Email</label>
+                                                <input id="reg_email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} className="w-full bg-surface-container-low border-b-2 border-outline-variant py-4 px-4 font-body-md focus:border-primary focus:ring-0 transition-all duration-300" placeholder="name@example.com" required type="email" />
+                                                {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" htmlFor="reg_password">Mật khẩu</label>
+                                                <div className="relative">
+                                                    <input id="reg_password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} className="w-full bg-surface-container-low border-b-2 border-outline-variant py-4 px-4 font-body-md focus:border-primary focus:ring-0 transition-all duration-300" placeholder="••••••••" required type={showPass ? 'text' : 'password'} />
+                                                    <button type="button" className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" onClick={() => setShowPass(!showPass)}>
+                                                        <span className="material-symbols-outlined text-[20px]">{showPass ? 'visibility_off' : 'visibility'}</span>
+                                                    </button>
+                                                </div>
+                                                {errors.password && <div className="text-red-500 text-sm">{errors.password}</div>}
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <label className="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" htmlFor="reg_confirm">Xác nhận mật khẩu</label>
+                                                <div className="relative">
+                                                    <input id="reg_confirm" value={form.confirm} onChange={e => setForm({ ...form, confirm: e.target.value })} className="w-full bg-surface-container-low border-b-2 border-outline-variant py-4 px-4 font-body-md focus:border-primary focus:ring-0 transition-all duration-300" placeholder="••••••••" required type={showConfirm ? 'text' : 'password'} />
+                                                    <button type="button" className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" onClick={() => setShowConfirm(!showConfirm)}>
+                                                        <span className="material-symbols-outlined text-[20px]">{showConfirm ? 'visibility_off' : 'visibility'}</span>
+                                                    </button>
+                                                </div>
+                                                {errors.confirm && <div className="text-red-500 text-sm">{errors.confirm}</div>}
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <input id="terms_reg" checked={form.accept} onChange={e => setForm({ ...form, accept: e.target.checked })} className="w-5 h-5 border-2 border-outline-variant text-primary focus:ring-primary rounded-sm" type="checkbox" />
+                                                <label className="font-body-md text-body-md text-on-surface-variant" htmlFor="terms_reg">
+                                                    Tôi đồng ý với <a className="text-primary underline" href="#">Điều khoản</a> và <a className="text-primary underline" href="#">Chính sách bảo mật</a>.
+                                                </label>
+                                            </div>
+                                            {errors.accept && <div className="text-red-500 text-sm">{errors.accept}</div>}
+                                        </div>
+                                        <button className="w-full bg-primary text-on-primary py-5 rounded-2xl font-label-md text-label-md uppercase tracking-[0.1em] kinetic-hover flex items-center justify-center gap-3 mt-4" type="submit" disabled={isSubmitting}>
+                                            <span>{isSubmitting ? status : 'Đăng ký'}</span>
+                                            <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                        </button>
+                                    </form>
+                                    <div className="mt-6 text-center">
+                                        <p className="font-body-md text-on-surface-variant">Bạn đã có tài khoản? <Link to="/login" className="text-primary font-bold ml-1 hover:underline">Đăng nhập</Link></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    );
+                };
+
+        // Screen 2: Contact
+        const ContactPage = () => (
+            <main className="pt-20">
+                <section className="relative h-[409px] min-h-[400px] flex items-center overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT_AHIYttJq1jmqP0DjXE1shoXlOtRX68YUqOI4ZOjq87Yowx4BXYkXl_gy4EmLl0H3f3BZPGnlF15tSPcJqBHE_410qtK5_LpAhpbVkzjdsCyIroFz86DkF1D0Tq76EQA-IIR-9dBLLSmzEzenaqPWdCYSRfiXuPKevJzWyCGsDJB0mkkEUcK6YzKTWtOXCRiqrY1B-dPogmpNvs89dpEtQagUv1JMiHCmt4qZaBN8ozm9R7OVDZuWqsLZxNXa4YSsPoW9H3-hM5U" />
+                        <div className="absolute inset-0 bg-black/40"></div>
+                        <div className="absolute inset-0 hero-gradient"></div>
+                    </div>
+                    <div className="relative z-10 max-w-container-max mx-auto px-margin-desktop w-full">
+                        <div className="max-w-2xl">
+                            <span className="inline-block px-4 py-1 rounded-full bg-primary text-on-primary font-label-md text-label-md mb-6 uppercase tracking-widest">Kết nối ngay</span>
+                            <h1 className="font-display-xl text-display-xl text-primary mb-4 leading-none">Liên hệ với HNP Sport</h1>
+                            <p className="font-body-lg text-body-lg text-on-surface-variant">Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn chinh phục những mục tiêu mới.</p>
+                        </div>
+                    </div>
+                </section>
+                <section className="py-section-gap max-w-container-max mx-auto px-margin-desktop">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+                        <div className="lg:col-span-5 space-y-12">
+                            <div>
+                                <h2 className="font-headline-lg text-headline-lg mb-8">Thông tin showroom</h2>
+                                <div className="space-y-8">
+                                    <div className="flex gap-6 group">
+                                        <div className="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110">
+                                            <span className="material-symbols-outlined text-primary text-2xl">location_on</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-headline-sm text-headline-sm mb-1">Trụ sở chính</h4>
+                                            <p className="font-body-md text-body-md text-on-surface-variant">211 Lê Tấn Trung, Sơn Trà, Đà Nẵng</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-6 group">
+                                        <div className="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110">
+                                            <span className="material-symbols-outlined text-primary text-2xl">call</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-headline-sm text-headline-sm mb-1">Hotline hỗ trợ</h4>
+                                            <p className="font-body-md text-body-md text-on-surface-variant font-bold">1900 123 456</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="p-8 rounded-[24px] bg-primary text-on-primary">
+                                <h3 className="font-headline-sm text-headline-sm mb-4">Gia nhập cộng đồng Elite</h3>
+                                <p className="font-body-md text-body-md opacity-80 mb-6">Nhận thông báo sớm nhất về các bộ sưu tập giới hạn và ưu đãi đặc quyền.</p>
+                                <div className="flex flex-wrap gap-4">
+                                    <a className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-primary transition-all" href="#">FB</a>
+                                    <a className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-primary transition-all" href="#">IG</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="lg:col-span-7">
+                            <div className="bg-surface-container-low p-8 md:p-12 rounded-[32px] border border-outline-variant/30">
+                                <h2 className="font-headline-md text-headline-md mb-2">Gửi lời nhắn cho chúng tôi</h2>
+                                <p className="font-body-md text-body-md text-on-surface-variant mb-10">Phản hồi của bạn là động lực để chúng tôi hoàn thiện hơn.</p>
+                                <form className="space-y-8" onSubmit={(e) => { e.preventDefault(); alert('Cảm ơn! Chúng tôi sẽ phản hồi sớm.'); }}>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <input className="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:border-primary focus:ring-0 transition-all" placeholder="Họ và tên" required type="text" />
+                                        <input className="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:border-primary focus:ring-0 transition-all" placeholder="Địa chỉ Email" required type="email" />
+                                    </div>
+                                    <textarea className="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 focus:border-primary focus:ring-0 transition-all resize-none" placeholder="Bạn cần hỗ trợ điều gì?" required rows="4"></textarea>
+                                    <button className="w-full md:w-auto px-10 py-5 bg-primary text-on-primary rounded-xl font-label-md text-label-md uppercase tracking-widest hover:scale-105 active:scale-95 transition-all" type="submit">
+                                        Gửi yêu cầu ngay
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div className="md:col-span-3">
+                            <div className="rounded-3xl overflow-hidden border border-outline-variant/20 shadow-sm">
+                                <div className="relative w-full h-64 md:h-96 lg:h-[520px]">
+                                    {/* improved map embed using MapEmbed component */}
+                                    <MapEmbed className="w-full h-full" query={"211 Lê Tấn Trung, Sơn Trà, Đà Nẵng"} />
+
+                                    <div className="absolute left-4 bottom-4 bg-white/95 p-4 rounded-lg shadow-lg border border-outline-variant/20 max-w-xs backdrop-blur-sm">
+                                        <div className="font-bold text-primary">HNP Sport - Showroom</div>
+                                        <div className="text-sm text-on-surface-variant">211 Lê Tấn Trung, Sơn Trà, Đà Nẵng</div>
+                                        <div className="mt-3 flex gap-2">
+                                            <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('211 Lê Tấn Trung, Sơn Trà, Đà Nẵng')}`} target="_blank" rel="noopener noreferrer" className="px-3 py-2 bg-primary text-on-primary rounded-md text-sm hover:opacity-90 transition">Mở trên Google Maps</a>
+                                            <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('211 Lê Tấn Trung, Sơn Trà, Đà Nẵng')}`} target="_blank" rel="noopener noreferrer" className="px-3 py-2 border rounded-md text-sm hover:shadow-sm transition">Chỉ đường</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </section>
+                <Footer />
+            </main>
+        );
+
+        // Screen 3: Promotions
+        const PromotionsPage = () => (
+            <main className="pt-20">
+                <section className="relative pt-16 pb-section-gap overflow-hidden">
+                    <div className="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+                        <div className="md:col-span-6 z-10">
+                            <span className="inline-block px-4 py-1 mb-6 rounded-full bg-primary text-on-primary font-label-md text-label-md tracking-widest uppercase">Ưu đãi độc quyền</span>
+                            <h1 className="font-display-xl text-display-xl mb-6 leading-tight">CHINH PHỤC <br/>MỌI GIỚI HẠN</h1>
+                            <p className="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg">
+                                Chào đón bộ sưu tập HNP Elite mới nhất với ưu đãi lên tới 30%. Công nghệ vải Kinetic Breath độc quyền.
+                            </p>
+                            <div className="flex flex-wrap gap-4">
+                                <Link to="/products" className="px-10 py-4 bg-primary text-on-primary font-label-md text-label-md rounded-[16px] hover:scale-105 transition-all">KHÁM PHÁ NGAY</Link>
+                            </div>
+                        </div>
+                        <div className="md:col-span-6 relative mt-12 md:mt-0">
+                            <div className="relative w-full aspect-[4/5] rounded-[32px] overflow-hidden">
+                                <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGBJhONSWJ8osPjFRri9TwR9RHwXXkFU4lNnUXmyIokyZTcjwxDLrEdGQU9Ey1sT5XTA571t72FVjpcymO8roxAX1adYyS32Ygd2gbikcSMvKBg--yUE0fD4g4Ks7T38wGQlVY0lqFcqMjcN08s804-ozOxWGd3lmC8CeJDG1z_GeEGR_WDxUWR4X3hC6hEXLQfp8mmIfj4NoA2qEkFmmqkhq59yAGz3pVViWoBdnaY8aptiRk-F9voHqBs_Phv0KjHspqEBgS6wrj" />
+                            </div>
+                            <div className="absolute -bottom-8 -left-8 bg-surface/90 backdrop-blur-md p-8 rounded-[24px] border border-outline-variant/30 shadow-2xl">
+                                <p className="font-headline-sm text-headline-sm font-black text-primary mb-1">-30% OFF</p>
+                                <p className="font-label-md text-label-md text-on-surface-variant">Đơn hàng đầu tiên qua App</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="py-section-gap bg-surface-container-low">
+                    <div className="max-w-container-max mx-auto px-margin-desktop">
+                        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-gutter h-full md:h-[600px]">
+                            <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[24px]">
+                                <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFizFx7OW8sJESrYyBChz8Prz6P7zScXnNI5j-Y7lNc7rScQnhBXJ9Fow2Qw20r8p4fJkXzXTRoJ3SpCXBGiArXsLDb8ztugELH2aAQd8K7-Csr5zTZClr1YyD1DA8kVeSHnaT-NkgjkaAyHsKuH9i6HGAMz3QiCyXA7voV3uW4lGOCZQaphM2I4WZp4P_e8d18Pnqu5U29MaAOqNry4M_gaGCk50hcIOCoSfLiujTRdp0tUaGw6dDOu3U1HADGWZTWK5HP-xdhWKG" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-10 text-on-primary">
+                                    <h3 className="font-headline-md text-headline-md mb-2">MUA 2 TẶNG 1</h3>
+                                    <p className="opacity-80 mb-6">Ưu đãi dành cho tất cả phụ kiện gym cao cấp.</p>
+                                    <button className="bg-white text-primary px-8 py-3 rounded-[16px] font-bold w-fit">MUA NGAY</button>
+                                </div>
+                            </div>
+                            <div className="md:col-span-2 bg-primary rounded-[24px] p-10 text-white flex flex-col justify-between">
+                                <div>
+                                    <span className="material-symbols-outlined">bolt</span>
+                                    <h3 className="text-2xl font-bold mt-4">FLASH SALE 48H</h3>
+                                    <p className="opacity-70">Giảm đến 50% các mẫu Outlet</p>
+                                </div>
+                                <div className="flex gap-4 mt-6">
+                                    <div className="text-center bg-white/10 p-2 rounded">12h : 45m : 30s</div>
+                                </div>
+                            </div>
+                            <div className="bg-white p-8 rounded-[24px] border border-outline-variant flex flex-col justify-between">
+                                <span className="material-symbols-outlined text-primary text-3xl">local_shipping</span>
+                                <h4 class="font-bold">MIỄN PHÍ SHIP</h4>
+                                <p class="text-sm">Đơn hàng từ 1.5Mđ</p>
+                            </div>
+                            <div className="bg-tertiary-container text-on-tertiary-container p-8 rounded-[24px] flex flex-col justify-between">
+                                <span className="material-symbols-outlined text-3xl">card_membership</span>
+                                <h4 class="font-bold">HNP REWARDS</h4>
+                                <p class="text-sm">Tích điểm đổi quà</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <Footer />
+            </main>
+        );
+
+        // Screen 4: Home
+        const HomePage = () => (
+            <main>
+                <section className="relative h-screen w-full flex items-center overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <div className="absolute inset-0 bg-black/30 z-10"></div>
+                        <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJkbTE6W4oDOAdD7kyurIDqweOkUpGw_we_lPnJW3LfuqGkxaWPnD7cC9TeT4oYmKOv8dVbEzly4oyDE1CfoV07iKg04ktnjP1qgWdKGJyZ-y05PZXIIKwqZPvoxpbOX1bch8tfC-S5V9ZSyT4hHYf0Tl4oECuF6hkjuqKJj8bVugOeHU30nKkc2uXqr95GTStfZT0QPOF5gwHXruEGGaOXzXPbcDMkNRGRIY7VeU-mOc2pz4kzP_1ROqTduu99OcC5cWqMdaJH5j_" />
+                    </div>
+                    <div className="relative z-20 w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-white">
+                        <div className="max-w-2xl">
+                            <h1 className="font-display-xl text-[48px] md:text-display-xl leading-tight mb-6 uppercase italic font-black">Bứt phá giới hạn cùng HNP Sport</h1>
+                            <p className="font-body-lg text-body-lg text-white/90 mb-10 max-w-lg">Khám phá bộ sưu tập quần áo thể thao chất lượng cao, thiết kế hiện đại, mang lại sự thoải mái tối đa.</p>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Link to="/products" className="bg-white text-primary px-10 py-4 rounded-xl font-bold text-center hover:scale-105 transition-all">Mua ngay</Link>
+                                <Link to="/about" className="border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-center hover:bg-white/10 transition-all backdrop-blur-sm">Khám phá câu chuyện</Link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                                {[
+                            { name: 'Áo thể thao', desc: 'Thoáng khí, tối ưu', img: 'IMG/AoDen.png', category: 'Áo thể thao' },
+                            { name: 'Quần thể thao', desc: 'Co giãn 4 chiều', img: 'IMG/quanDen.png', category: 'Quần Legging' },
+                            { name: 'Giày chạy bộ', desc: 'Đệm Kinetic Ultra', img: 'IMG/Giay.png', category: 'Giày chạy bộ' },
+                            { name: 'Phụ kiện Elite', desc: 'Đẳng cấp chuyên gia', img: 'IMG/PhuKien.png', category: 'Phụ kiện' }
+                        ].map((cat, i) => (
+                            <Link key={i} to={`/products?category=${encodeURIComponent(cat.category)}`} className="group relative aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low kinetic-hover cursor-pointer">
+                                <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={cat.img} />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-8 flex flex-col justify-end">
+                                    <h3 className="text-white font-bold text-xl mb-1">{cat.name}</h3>
+                                    <p className="text-white/80 text-sm">{cat.desc}</p>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
+                <section className="bg-primary py-20 text-center text-white">
+                    <h2 className="text-3xl font-black italic uppercase mb-4">Ưu đãi lên tới 30%</h2>
+                    <p className="opacity-70 mb-10">Dành cho các dòng sản phẩm Elite Tech mới nhất.</p>
+                    <Link to="/promotions" className="bg-white text-primary px-10 py-4 rounded-xl font-bold inline-block hover:scale-105 transition-all">Xem ưu đãi</Link>
+                </section>
+                <Footer />
+            </main>
+        );
+
+        // Screen 5: Products
+        const ProductsPage = () => {
+            const navigate = useNavigate();
+            const location = useLocation();
+            const qs = React.useMemo(() => new URLSearchParams(location.search), [location.search]);
+            const focus = qs.get('focus') === 'true';
+            const singleProductId = qs.get('product') ? Number(qs.get('product')) : null;
+
+            const [query, setQuery] = useState(qs.get('q') || '');
+            const [category, setCategory] = useState(qs.get('category') || 'Tất cả');
+            const inputRef = useRef(null);
+            const { addToCart } = useContext(CartContext);
+
+            useEffect(() => {
+                if (focus && inputRef.current) inputRef.current.focus();
+            }, [focus]);
+
+            const categories = React.useMemo(() => ['Tất cả', ...Array.from(new Set(PRODUCTS.map(p => p.category)))], []);
+
+            const matches = useCallback((p) => {
+                if (category && category !== 'Tất cả' && p.category !== category) return false;
+                if (query && !p.name.toLowerCase().includes(query.trim().toLowerCase())) return false;
+                return true;
+            }, [category, query]);
+
+            const filtered = React.useMemo(() => (singleProductId ? PRODUCTS.filter(p => p.id === singleProductId) : PRODUCTS.filter(matches)), [singleProductId, matches]);
+
+            const onCardClick = (p) => {
+                // navigate to product detail page
+                navigate(`/product/${p.id}`);
+            };
+
+            return (
+                <main className="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-desktop">
+                    <header className="mb-6">
+                        <h1 className="font-headline-lg text-headline-lg text-primary mb-4 uppercase italic font-black">Bộ Sưu Tập Hiệu Suất Cao</h1>
+                        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Khám phá những thiết kế mới nhất kết hợp công nghệ thể thao tiên tiến.</p>
+                    </header>
+
+                    <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div className="flex-1 md:pr-6">
+                            <div className="relative max-w-lg">
+                                <input ref={inputRef} value={query} onChange={e => setQuery(e.target.value)} placeholder="Tìm kiếm sản phẩm, thương hiệu, mã" className="w-full bg-white/60 dark:bg-surface-container-low shadow-sm rounded-full py-3 pl-14 pr-12 border border-outline-variant focus:ring-2 focus:ring-primary/30 focus:outline-none transition" />
+                                <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                                {query && (
+                                    <button onClick={() => setQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant bg-transparent w-6 h-6 rounded-full flex items-center justify-center">✕</button>
+                                )}
+                            </div>
+                            <div className="mt-4 flex gap-3 flex-wrap">
+                                {categories.map(cat => (
+                                    <button key={cat} onClick={() => { setCategory(cat); navigate(`/products?category=${encodeURIComponent(cat)}`); }} className={`px-4 py-2 rounded-full border ${category === cat ? 'bg-primary text-on-primary' : 'bg-surface-container-low text-on-surface-variant'}`}>{cat}</button>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="md:w-64 text-right">
+                            <div className="text-sm text-on-surface-variant">{filtered.length} sản phẩm</div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-12">
+                        {filtered.map(p => (
+                            <div key={p.id} className="group cursor-pointer" onClick={() => onCardClick(p)}>
+                                <div className="relative aspect-[1.34] bg-surface-container-low overflow-hidden rounded-3xl mb-4">
+                                    <img className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" src={p.image} />
+                                    <button onClick={(e) => { e.stopPropagation(); addToCart(p.id); }} className="absolute bottom-4 right-4 bg-white text-primary w-12 h-12 rounded-full flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
+                                        <span className="material-symbols-outlined">shopping_bag</span>
+                                    </button>
+                                </div>
+                                <div className="space-y-2">
+                                    <div className="flex justify-between items-center">
+                                        <h3 className="font-bold">{p.name}</h3>
+                                        <span className="font-bold">{p.rating} ★</span>
+                                    </div>
+                                    <p className="text-2xl font-black">{p.priceText}</p>
+                                    {singleProductId === p.id && (
+                                        <div className="mt-3 text-on-surface-variant">Xem chi tiết sản phẩm - hiển thị riêng theo yêu cầu.</div>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                        {filtered.length === 0 && (
+                            <div className="col-span-full text-center text-on-surface-variant">Không tìm thấy sản phẩm phù hợp.</div>
+                        )}
+                    </div>
+                    <br />
+                    <br />
+                    <Footer />
+                </main>
+            );
+        };
+
+        // --- Screen: Blog / Articles
+        const BlogPage = () => (
+            <main className="pt-20">
+                <section className="relative h-[520px] flex items-center overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <img className="w-full h-full object-cover grayscale" src="IMG/Giay.png" />
+                        <div className="absolute inset-0 bg-black/40"></div>
+                    </div>
+                    <div className="relative z-10 max-w-container-max mx-auto px-margin-desktop w-full text-white">
+                        <div className="max-w-3xl">
+                            <span className="inline-block px-4 py-1 rounded-full bg-primary text-on-primary font-label-md text-label-md mb-6 uppercase tracking-widest">Featured Story</span>
+                            <h1 className="font-display-xl text-[44px] md:text-5xl leading-tight mb-4 uppercase italic font-black">PHÁ VỠ GIỚI HẠN: KỶ NGUYÊN MỚI CỦA TECHWEAR</h1>
+                            <p className="font-body-lg text-body-lg text-white/80 mb-6">Khám phá sự giao thoa giữa hiệu suất cao và thiết kế tối giản trong bộ sưu tập mới nhất của HNP Sport.</p>
+                            <Link to="/chitietbaiviet/1" className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-bold">ĐỌC BÀI VIẾT</Link>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="py-section-gap max-w-container-max mx-auto px-margin-desktop">
+                    <div className="flex items-center justify-between mb-6">
+                        <h2 className="font-headline-lg text-headline-lg">HIỆU SUẤT & KỸ THUẬT</h2>
+                        <Link to="/blog" className="text-sm text-on-surface-variant">XEM TẤT CẢ</Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {ARTICLES.map(a => (
+                            <article key={a.id} className="bg-white rounded-2xl overflow-hidden shadow-sm min-h-[440px]">
+                                <Link to={`/chitietbaiviet/${a.id}`} className="block">
+                                    <img src={a.img} className="w-full h-96 object-cover" />
+                                </Link>
+                                <div className="p-4">
+                                    <Link to={`/chitietbaiviet/${a.id}`} className="font-bold text-xl block hover:text-primary">{a.title}</Link>
+                                    <div className="text-sm text-on-surface-variant mt-2">{a.author} • {a.date}</div>
+                                    <p className="text-on-surface-variant text-sm mt-3">{a.excerpt}</p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </section>
+
+                {/* LỐI SỐNG ELITE section removed as requested */}
+
+                <section className="py-16">
+                    <div className="max-w-container-max mx-auto px-margin-desktop text-center">
+                        <blockquote className="italic text-2xl">"HNP Sport không chỉ bán trang phục, họ kiến tạo một môi trường nơi người không bao giờ chấp nhận dừng lại."</blockquote>
+                        <div className="mt-6 text-sm text-on-surface-variant">— Elite Vietnam</div>
+                    </div>
+                </section>
+
+                <Footer />
+            </main>
+        );
+
+        // --- Product Detail Screen
+        // --- Articles dataset and Article Detail Screen
+        const ARTICLES = [
+            {
+                id: 1,
+                title: 'Hướng Dẫn Cách Chọn Quần Áo Thể Thao Phù Hợp Cho Từng Bộ Môn',
+                img: 'IMG/Giay.png',
+                author: 'HNP Editorial',
+                date: '12 Tháng 3, 2026',
+                excerpt: 'Quần áo thể thao không chỉ giúp người mặc cảm thấy thoải mái khi vận động mà còn góp phần nâng cao hiệu quả tập luyện và bảo vệ cơ thể khỏi những tác động từ môi trường. Tuy nhiên, mỗi bộ môn thể thao lại có những yêu cầu riêng về chất liệu, kiểu dáng và tính năng của trang phục. Vì vậy, việc lựa chọn quần áo thể thao phù hợp sẽ giúp bạn tự tin hơn, hạn chế chấn thương và đạt được kết quả luyện tập tốt hơn.',
+                // structured sections for TOC + anchored rendering
+                sections: [
+                    {
+                        id: 'why',
+                        tocLabel: '1. Vì sao cần lựa chọn quần áo thể thao phù hợp?',
+                        title: 'Vì sao cần lựa chọn quần áo thể thao phù hợp',
+                        img: 'IMG/article_why_1.jpg',
+                        paragraphs: [
+                            'Nhiều người thường nghĩ chỉ cần mặc quần áo rộng rãi là có thể tập luyện hiệu quả. Tuy nhiên, trang phục chuyên dụng được thiết kế để đáp ứng nhu cầu vận động với nhiều ưu điểm như:',
+                        ]
+                    },
+                    {
+                        id: 'benefits',
+                        tocLabel: '',
+                        title: '',
+                        list: [
+                            'Thấm hút mồ hôi nhanh, giúp cơ thể luôn khô thoáng.',
+                            'Co giãn tốt, tạo cảm giác thoải mái khi thực hiện các động tác.',
+                            'Hạn chế ma sát, tránh gây kích ứng da.',
+                            'Tăng sự tự tin và tạo động lực luyện tập.',
+                            'Độ bền cao, phù hợp với cường độ vận động thường xuyên.'
+                        ]
+                    },
+                    {
+                        id: 'choose-overview',
+                        tocLabel: '2. Cách chọn quần áo thể thao cho từng bộ môn',
+                        title: 'Cách chọn quần áo thể thao cho từng bộ môn',
+                        paragraphs: [
+                            'Tùy theo tính chất vận động của từng môn, bạn nên lưu ý các tiêu chí khác nhau khi chọn trang phục.'
+                        ]
+                    },
+                    {
+                        id: 'gym',
+                        tocLabel: '2.1 Gym',
+                        title: 'Gym',
+                        paragraphs: [
+                            'Khi tập gym, bạn nên ưu tiên những bộ trang phục có khả năng co giãn 4 chiều, ôm vừa vặn cơ thể nhưng không quá bó sát. Chất liệu nên có khả năng thấm hút mồ hôi tốt để giữ cơ thể luôn khô ráo trong suốt buổi tập. Các chi tiết gia cố ở vùng tiếp xúc nhiều (đường may, mảng vải chịu lực) sẽ giúp sản phẩm bền hơn.'
+                        ],
+                        isSub: true
+                    },
+                    {
+
+                        id: 'running',
+                        tocLabel: '2.2 Chạy bộ',
+                        title: 'Chạy bộ',
+                        img: 'IMG/Picture2.png',
+                        paragraphs: [
+                            'Người chạy bộ nên lựa chọn quần áo có trọng lượng nhẹ, thoáng khí và nhanh khô. Đối với những người thường xuyên chạy ngoài trời vào buổi tối, nên ưu tiên trang phục có chi tiết phản quang để tăng độ an toàn. Ngoài ra, quần short/legging nên có khả năng co giãn tốt và không gây cọ xát khi chạy lâu.'
+                        ],
+                        isSub: true
+                    },
+                    {
+                        id: 'badminton',
+                        tocLabel: '2.3 Cầu lông',
+                        title: 'Cầu lông',
+                        img: 'IMG/Picture3.png',
+                        paragraphs: [
+                            'Môn thể thao này đòi hỏi người chơi di chuyển liên tục, vì vậy nên chọn quần áo có khả năng thoát nhiệt tốt, chất liệu nhẹ và bền. Thiết kế cần tạo sự linh hoạt để hỗ trợ các động tác bật nhảy, xoay người và chạy nhanh. Hạn chế các chi tiết rườm rà hoặc túi lớn có thể ảnh hưởng đến chuyển động.'
+                        ],
+                        isSub: true
+                    },
+                    {
+                        img: 'IMG/Picture4.png',
+                        id: 'criteria',
+                        tocLabel: '3. Những tiêu chí quan trọng khi mua quần áo thể thao',
+                        title: 'Những tiêu chí quan trọng khi mua quần áo thể thao',
+                        list: [
+                            'Chất liệu mềm mại, thấm hút mồ hôi tốt.',
+                            'Co giãn linh hoạt, không gây khó chịu khi vận động.',
+                            'Đường may chắc chắn, bền đẹp.',
+                            'Kích cỡ phù hợp với vóc dáng.',
+                            'Màu sắc và kiểu dáng phù hợp với phong cách cá nhân.',
+                            'Ưu tiên các sản phẩm có khả năng kháng khuẩn và nhanh khô.'
+                        ]
+                    }
+                ],
+                // keep excerpt for listing
+                body: ''
+            },
+            {
+                id: 2,
+                title: 'Top 5 Mẫu Quần Áo Thể Thao Được Yêu Thích Nhất Năm 2026 Tại HNP',
+                img: 'IMG/AoDen.png',
+                author: 'HNP Editorial',
+                date: '25 Tháng 6, 2026',
+                excerpt: 'Năm 2026 chứng kiến sự phát triển mạnh mẽ của xu hướng thời trang thể thao (Athleisure). Top 5 mẫu được khách hàng yêu thích nhất tại HNP.',
+                sections: [
+                    {
+                        id: 'intro',
+                        tocLabel: 'Giới thiệu',
+                        title: 'Xu hướng Athleisure 2026',
+                        paragraphs: [
+                            'Năm 2026 chứng kiến sự phát triển mạnh mẽ của xu hướng thời trang thể thao (Athleisure) khi người dùng không chỉ lựa chọn trang phục để tập luyện mà còn sử dụng trong cuộc sống hằng ngày. Các tiêu chí như thoáng khí, co giãn 4 chiều, thấm hút mồ hôi và thiết kế thời trang ngày càng được ưu tiên.',
+                            'Nếu bạn đang tìm kiếm quần áo thể thao chất lượng, dưới đây là Top 5 mẫu được khách hàng yêu thích nhất tại HNP.'
+                        ]
+                    },
+                    {
+                        id: 'gym-shirt',
+                        tocLabel: '1. Áo Thể Thao Gym Nữ HNP',
+                        title: 'Áo Thể Thao Gym Nữ HNP',
+                        paragraphs: [
+                            'Đây là sản phẩm bán chạy dành cho nữ giới yêu thích tập Gym, Fitness và Crossfit.'
+                        ],
+                        list: [
+                            'Chất liệu Polyester cao cấp',
+                            'Co giãn 4 chiều',
+                            'Thấm hút mồ hôi nhanh',
+                            'Form ôm thể thao tôn dáng',
+                            'Không bai nhão sau nhiều lần giặt'
+                        ]
+                    },
+                    {
+                        id: 'yoga-fitness',
+                        tocLabel: '2. Bộ đồ Yoga & Fitness nữ',
+                        title: 'Bộ đồ Yoga & Fitness nữ',
+                        paragraphs: [
+                            'Thiết kế ôm sát giúp tôn vóc dáng.'
+                        ],
+                        list: [
+                            'Co giãn 4 chiều',
+                            'Mềm mại',
+                            'Không lộ khuyết điểm',
+                            'Thoáng khí'
+                        ]
+                    },
+                    {
+                        id: 'shorts',
+                        tocLabel: '3. Quần short thể thao HNP',
+                        title: 'Quần short thể thao HNP',
+                        paragraphs: [
+                            'Một trong những mẫu bán chạy nhất mùa hè.'
+                        ],
+                        list: [
+                            'Có túi khóa kéo',
+                            'Nhẹ',
+                            'Co giãn',
+                            'Thấm hút tốt'
+                        ]
+                    },
+                    {
+                        id: 'jacket',
+                        tocLabel: '4. Áo khoác thể thao',
+                        title: 'Áo khoác thể thao',
+                        paragraphs: [
+                            'Không chỉ dùng để tập luyện mà còn rất phù hợp khi đi chơi hoặc du lịch.'
+                        ],
+                        list: [
+                            'Chống nắng',
+                            'Cản gió',
+                            'Siêu nhẹ',
+                            'Thiết kế hiện đại'
+                        ]
+                    },
+                    {
+                        id: 'badminton',
+                        tocLabel: '5. Bộ đồ thể thao cầu lông',
+                        title: 'Bộ đồ thể thao cầu lông',
+                        paragraphs: [
+                            'Được thiết kế dành riêng cho những chuyển động nhanh và liên tục.'
+                        ],
+                        list: [
+                            'Co giãn tốt',
+                            'Không bám mồ hôi',
+                            'Thoáng mát',
+                            'Thiết kế năng động'
+                        ]
+                    },
+                    {
+                        id: 'conclusion',
+                        tocLabel: 'Kết luận',
+                        title: 'Kết luận',
+                        paragraphs: [
+                            'Top 5 mẫu quần áo thể thao trên đây là những sự lựa chọn tuyệt vời dành cho bất kỳ ai muốn nâng cao chất lượng trang phục thể thao của mình. Dù bạn là người tập Gym, Yoga, chạy bộ hay chơi cầu lông, HNP Sport có đủ các sản phẩm đáp ứng nhu cầu của bạn với chất lượng cao cấp và giá cả phải chăng.'
+                        ]
+                    }
+                ],
+                body: ''
+            },
+            {
+                id: 3,
+                title: 'Hướng dẫn phối đồ thể thao năng động và thời trang cho nam, nữ',
+                img: 'IMG/quanDen.png',
+                author: 'HNP Style Team',
+                date: '21 Tháng 1, 2026',
+                excerpt: 'Gợi ý mix & match cho buổi tập, dạo phố và những dịp kết hợp athleisure.',
+                body: `Phong cách thể thao ngày nay không chỉ gói gọn trong phòng tập. Athleisure cho phép bạn kết hợp trang phục thể thao với các item streetwear để tạo vẻ ngoài thời thượng.
+
+Bài viết này trình bày 8 set phối đồ cho nam và nữ, kèm theo mẹo chọn màu sắc, tỉ lệ và phụ kiện phù hợp. Ví dụ: kết hợp legging màu tối với áo khoác oversized và sneaker trắng cho vẻ ngoài cân bằng.
+
+Ngoài ra, chúng tôi cung cấp hướng dẫn chọn phụ kiện (balo, mũ, bình nước) để hoàn thiện diện mạo mà vẫn giữ tính tiện dụng.
+`
+            }
+        ];
+
+        const ArticleDetailPage = () => {
+            const { id } = useParams();
+            const aid = Number(id);
+            const article = ARTICLES.find(a => a.id === aid);
+            if (!article) {
+                return (
+                    <main className="pt-32 px-margin-desktop max-w-container-max mx-auto">
+                        <div className="text-center py-40">
+                            <h2 className="text-2xl font-bold">Bài viết không tồn tại</h2>
+                            <p className="mt-4 text-on-surface-variant">Xin thử lại hoặc quay về trang bài viết.</p>
+                            <div className="mt-6">
+                                <Link to="/blog" className="px-6 py-3 bg-primary text-white rounded">Quay về</Link>
+                            </div>
+                        </div>
+                    </main>
+                );
+            }
+
+            return (
+                <main className="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-desktop">
+                    <article className="prose mx-auto">
+                        <div className="rounded-2xl overflow-hidden mb-8">
+                            <img src={article.img} className="w-full h-80 object-cover rounded-t-2xl" />
+                        </div>
+                        <div className="text-on-surface-variant mb-2 text-sm">{article.author} • {article.date}</div>
+                        <h1 className="font-display-xl text-headline-lg mb-4">{article.title}</h1>
+                        <p className="text-on-surface-variant mb-6">{article.excerpt}</p>
+                        <div className="bg-surface-container-low p-6 rounded-lg space-y-4">
+                            {article.sections ? (
+                                <div className="grid md:grid-cols-4 gap-6">
+                                    <nav className="md:col-span-1">
+                                        <h4 className="font-bold mb-3">Mục lục</h4>
+                                        <ul className="space-y-2 text-sm">
+                                            {article.sections.map(s => s.tocLabel ? (
+                                                <li key={s.id}>
+                                                    <a href={`#${s.id}`} className={`hover:text-primary ${s.isSub ? 'pl-3 block' : 'block'}`}>{s.tocLabel}</a>
+                                                </li>
+                                            ) : null)}
+                                        </ul>
+                                    </nav>
+                                    <div className="md:col-span-3 space-y-6">
+                                        {article.sections.map(s => (
+                                            <section id={s.id} key={s.id} className="scroll-mt-28">
+                                                {s.img && (
+                                                    <img
+                                                        src={s.img}
+                                                        loading="lazy"
+                                                        alt={s.title || article.title}
+                                                        className="w-full h-40 md:h-56 object-contain rounded mb-4"
+                                                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'IMG/screen.png'; console.warn('Failed to load', s.img); }}
+                                                    />
+                                                )}
+                                                {s.title && <h3 className="font-bold text-xl mb-2">{s.title}</h3>}
+                                                {s.paragraphs && s.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+                                                {s.list && (
+                                                    <ul className="list-disc pl-5 space-y-2">
+                                                        {s.list.map((li, j) => <li key={j}>{li}</li>)}
+                                                    </ul>
+                                                )}
+                                            </section>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                String(article.body).split('\n\n').map((para, idx) => (
+                                    <p key={idx}>{para.trim()}</p>
+                                ))
+                            )}
+                        </div>
+                        <div className="mt-8">
+                            <Link to="/blog" className="text-primary font-bold">← Quay về trang Bài viết</Link>
+                        </div>
+                    </article>
+                    <br />
+                    <Footer />
+                </main>
+            );
+        };
+        const ProductDetail = () => {
+            const { id } = useParams();
+            const navigate = useNavigate();
+            const { addToCart } = useContext(CartContext);
+            const pid = Number(id);
+            const product = PRODUCTS.find(p => p.id === pid);
+
+            if (!product) {
+                return (
+                    <main className="pt-32 px-margin-desktop max-w-container-max mx-auto">
+                        <div className="text-center py-40">
+                            <h2 className="text-2xl font-bold">Sản phẩm không tồn tại</h2>
+                            <p className="mt-4 text-on-surface-variant">Vui lòng trở về danh sách sản phẩm.</p>
+                            <div className="mt-6">
+                                <Link to="/products" className="px-6 py-3 bg-primary text-on-primary rounded-lg">Quay lại</Link>
+                            </div>
+                        </div>
+                    </main>
+                );
+            }
+
+            return (
+                <main className="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-desktop">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div className="w-full">
+                            <div className="rounded-3xl overflow-hidden bg-surface-container-low">
+                                <img className="w-full h-[560px] object-contain bg-white p-8" src={product.image} alt={product.name} />
+                            </div>
+                            <div className="mt-6 flex gap-3">
+                                {/* thumbnails: reuse same image for demo */}
+                                {[0,1,2].map(i => (
+                                    <button key={i} className="w-20 h-20 rounded-lg border border-outline-variant/30 bg-white overflow-hidden kinetic-hover hover:scale-105 transition-transform duration-200">
+                                        <img className="w-full h-full object-cover" src={product.image} alt={product.name} />
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="w-full">
+                            <div className="flex items-center justify-between mb-2">
+                                <div className="text-on-surface-variant">{product.brand} • {product.category}</div>
+                                <div className="text-on-surface-variant">Mã: {product.id}</div>
+                            </div>
+                            <h1 className="text-3xl font-extrabold mb-3">{product.name}</h1>
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="text-2xl font-black">{product.priceText}</div>
+                                <div className="text-on-surface-variant">{product.rating} ★</div>
+                            </div>
+
+                            <p className="text-on-surface-variant mb-6">Mô tả nhanh: Sản phẩm demo mô phỏng trang chi tiết. Thêm mô tả chi tiết, thông số kỹ thuật, đánh giá và chính sách đổi trả ở đây.</p>
+
+                            <div className="mb-6">
+                                <div className="mb-2 font-bold">Chọn kích cỡ</div>
+                                <div className="flex flex-wrap gap-3">
+                                    {[37,38,39,40,41,42,43].map(sz => (
+                                        <button key={sz} className="px-4 py-3 border rounded-md bg-surface-container text-on-surface-variant hover:border-primary hover:scale-105 transform transition duration-200">{sz}</button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 items-center">
+                                <button onClick={() => { addToCart(product.id); alert('Đã thêm vào giỏ (mô phỏng)'); }} className="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold kinetic-hover hover:scale-105 transition-transform duration-200">Thêm vào giỏ</button>
+                                <button onClick={() => navigate('/cart')} className="px-6 py-3 border rounded-lg kinetic-hover hover:shadow-md hover:scale-105 transition-all duration-200">Xem giỏ hàng</button>
+                            </div>
+
+                            <div className="mt-10 border-t pt-6 text-on-surface-variant">
+                                <h3 className="font-bold mb-2">Thông số & Ưu điểm</h3>
+                                <ul className="list-disc pl-5 space-y-2">
+                                    <li>Chất liệu: Engineered Mesh</li>
+                                    <li>Đế: Cao su siêu bám</li>
+                                    <li>Trọng lượng: ~210g (size 41)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mt-16">
+                        <h3 className="font-headline-sm text-headline-sm mb-4">Sản phẩm liên quan</h3>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                            {PRODUCTS.slice(0,4).map(p => (
+                                <div key={p.id} onClick={() => navigate(`/product/${p.id}`)} className="group cursor-pointer p-4 bg-surface-container-low rounded-lg transition-transform duration-200 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col min-h-[320px]">
+                                    <div className="relative rounded-lg overflow-hidden">
+                                        <img src={p.image} alt={p.name} className="w-full h-52 md:h-60 object-cover rounded-md transition-transform duration-500 group-hover:scale-105" />
+                                    </div>
+                                    <div className="mt-3 flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <div className="text-sm font-semibold text-on-surface mb-1">{p.name}</div>
+                                            <div className="text-xs text-on-surface-variant mb-2">{p.brand} • {p.category}</div>
+                                        </div>
+                                        <div className="mt-3 flex items-center justify-between">
+                                            <div className="text-lg font-black">{p.priceText}</div>
+                                            <button onClick={(e) => { e.stopPropagation(); addToCart(p.id); alert('Đã thêm vào giỏ (mô phỏng)'); }} className="bg-primary text-on-primary px-3 py-2 rounded-md text-sm hover:scale-105 transition-transform">Thêm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <br />
+                    <Footer />
+                </main>
+            );
+        };
+
+        // Screen 6: About
+        const AboutPage = () => (
+            <main className="pt-20">
+                <section className="relative h-[614px] flex items-center bg-surface-container-lowest">
+                    <div className="max-w-container-max mx-auto px-margin-desktop w-full grid grid-cols-1 md:grid-cols-2 items-center gap-gutter">
+                        <div className="space-y-6">
+                            <span className="inline-block px-4 py-1 bg-secondary-container rounded-full text-xs font-bold uppercase tracking-widest">Since 2020</span>
+                            <h1 className="text-5xl font-black uppercase italic leading-tight">Vươn tới sự hoàn mỹ</h1>
+                            <p className="text-on-surface-variant max-w-md">HNP Sport - thương hiệu quần áo thể thao cao cấp Việt Nam mang đến những sản phẩm chất lượng cao, thiết kế hiện đại, công nghệ vải thoáng khí tiên tiến. Giúp bạn tự tin tập luyện, bứt phá giới hạn và làm chủ mọi hành trình thể thao mỗi ngày.</p>
+                        </div>
+                        <div className="relative">
+                            <img src="IMG/screen.png" alt="HNP Sport showroom" loading="lazy" className="w-full h-[320px] md:h-[420px] lg:h-[520px] object-cover rounded-3xl shadow-2xl" />
+                        </div>
+                    </div>
+                </section>
+                <section className="py-24 bg-surface">
+                    <div className="max-w-3xl mx-auto text-center px-4">
+                        <h2 className="text-4xl font-black uppercase italic mb-12">Câu chuyện thương hiệu</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                            <p className="text-on-surface-variant">Khởi nguồn Năm 2020, HNP Sport được thành lập từ khát khao định hình lại chuẩn mực đồ thể thao tại Việt Nam. Chúng tôi thấu hiểu rằng trang phục thể thao không chỉ là quần áo, mà là yếu tố quyết định hiệu suất và sự tự tin của bạn trong từng chuyển động.</p>
+                            <p className="text-on-surface-variant">Triết lý Mỗi sản phẩm HNP Sport đều được chăm chút tỉ mỉ với chất liệu vải cao cấp, công nghệ thoáng khí tiên tiến và thiết kế tối giản, hiện đại. Thể thao với HNP Sport không chỉ là vận động – đó là phong cách sống vượt lên chính mình.</p>
+                        </div>
+                    </div>
+                </section>
+                <section className="py-24 px-margin-desktop bg-surface-container-low">
+                    <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                        <div className="md:col-span-2 bg-white p-12 rounded-3xl shadow-sm border border-outline-variant h-full flex flex-col">
+                            <span className="material-symbols-outlined text-4xl mb-6">visibility</span>
+                            <h3 className="text-2xl font-bold mb-4">Tầm nhìn 2030</h3>
+                            <p className="text-on-surface-variant">Trở thành thương hiệu thể thao cao cấp hàng đầu Việt Nam và khu vực Đông Nam Á, nơi công nghệ tiên tiến kết hợp hoàn hảo cùng phong cách sống năng động và tinh tế.</p>
+                        </div>
+
+                        <div className="bg-primary p-12 rounded-3xl text-white h-full flex flex-col">
+                            <span className="material-symbols-outlined text-4xl mb-6">rocket_launch</span>
+                            <h3 className="text-2xl font-bold mb-4">Sứ mệnh</h3>
+                            <p className="opacity-80">Sứ mệnh Nội dung: Trao quyền cho cộng đồng yêu thể thao Việt Nam thông qua những bộ sưu tập quần áo thể thao vượt trội về chất lượng và thẩm mỹ. Đồng hành cùng bạn nâng cao sức khỏe và xây dựng lối sống tích cực bền vững.</p>
+                        </div>
+
+                        <div className="md:col-span-3">
+                            <h3 className="text-2xl font-bold mb-6">Giá trị cốt lõi</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div className="p-6 bg-white rounded-2xl border border-outline-variant/20 shadow-sm h-full flex flex-col">
+                                    <i className="bx bxs-trophy text-4xl text-primary mb-3"></i>
+                                    <h4 className="font-bold mb-2">Chất Lượng Đỉnh Cao</h4>
+                                    <p className="text-sm text-on-surface-variant flex-1">Chọn lọc nguyên vật liệu cao cấp, kiểm định nghiêm ngặt nhằm đảm bảo độ bền tối đa và sự thoải mái tuyệt đối ngay cả khi tập luyện cường độ cao.</p>
+                                </div>
+
+                                <div className="p-6 bg-white rounded-2xl border border-outline-variant/20 shadow-sm h-full flex flex-col">
+                                    <i className="bx bxs-bolt text-4xl text-primary mb-3"></i>
+                                    <h4 className="font-bold mb-2">Hiệu Suất Tối Ưu</h4>
+                                    <p className="text-sm text-on-surface-variant flex-1">Thiết kế công thái học thông minh, hỗ trợ bảo vệ cơ bắp và giúp vận động viên giải phóng tối đa năng lượng trong mọi bộ môn thể thao.</p>
+                                </div>
+
+                                <div className="p-6 bg-white rounded-2xl border border-outline-variant/20 shadow-sm h-full flex flex-col">
+                                    <i className="bx bx-body text-4xl text-primary mb-3"></i>
+                                    <h4 className="font-bold mb-2">Khách Hàng Là Trung Tâm</h4>
+                                    <p className="text-sm text-on-surface-variant flex-1">Luôn lắng nghe và đặt trải nghiệm thực tế của người dùng lên hàng đầu để liên tục cải tiến sản phẩm từ những chi tiết nhỏ nhất.</p>
+                                </div>
+
+                                <div className="p-6 bg-white rounded-2xl border border-outline-variant/20 shadow-sm h-full flex flex-col">
+                                    <i className="bx bx-trending-up text-4xl text-primary mb-3"></i>
+                                    <h4 className="font-bold mb-2">Đổi Mới Không Ngừng</h4>
+                                    <p className="text-sm text-on-surface-variant flex-1">Liên tục cập nhật xu hướng thời trang thể thao thế giới và ứng dụng công nghệ chất liệu mới nhất vào sản xuất.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <Footer />
+            </main>
+        );
+
+        // Screen 7: Cart
+        const CartPage = () => {
+            const { items, setQuantity, clearCart, count } = useContext(CartContext);
+            const navigate = useNavigate();
+
+            // Build a detailed cart list from PRODUCTS
+            const productsInCart = Object.keys(items).map(id => {
+                const prod = PRODUCTS.find(p => String(p.id) === String(id));
+                return {
+                    id,
+                    quantity: items[id],
+                    product: prod
+                };
+            });
+
+            const subtotal = productsInCart.reduce((s, it) => s + (it.product ? parseFloat(String(it.product.priceText).replace(/[\D]/g, '')) * it.quantity : 0), 0) || 0;
+
+            // Simple checkout form state
+            const [shipping, setShipping] = useState('standard');
+            const [payment, setPayment] = useState('credit_card');
+            const [promo, setPromo] = useState('');
+            const [discount, setDiscount] = useState(0);
+            const [form, setForm] = useState({ fullName: '', email: '', phone: '', address: '', cardNumber: '', expiryDate: '', cvv: '' });
+            const [errors, setErrors] = useState({});
+
+            const applyPromo = () => {
+                // simple demo promos
+                if (promo.toUpperCase() === 'HNP10') {
+                    setDiscount(0.1);
+                    alert('Áp dụng mã HNP10 - giảm 10%');
+                } else if (promo.toUpperCase() === 'FREESHIP') {
+                    setDiscount(0);
+                    alert('Áp dụng mã FREESHIP - miễn phí giao hàng');
+                } else {
+                    alert('Mã giảm giá không hợp lệ');
+                }
+            };
+
+            const validate = () => {
+                const e = {};
+                if (!form.fullName) e.fullName = 'Vui lòng nhập họ tên';
+                if (!form.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) e.email = 'Email không hợp lệ';
+                if (!form.phone || form.phone.length < 8) e.phone = 'Số điện thoại không hợp lệ';
+                if (!form.address) e.address = 'Vui lòng nhập địa chỉ';
+                if (payment === 'credit_card') {
+                    if (!form.cardNumber || form.cardNumber.replace(/\s+/g, '').length < 12) e.cardNumber = 'Số thẻ không hợp lệ';
+                    if (!form.expiryDate) e.expiryDate = 'Ngày hết hạn';
+                    if (!form.cvv || form.cvv.length < 3) e.cvv = 'CVV không hợp lệ';
+                }
+                setErrors(e);
+                return Object.keys(e).length === 0;
+            };
+
+            const handleCheckout = (e) => {
+                e.preventDefault();
+                if (!validate()) return;
+                alert('Thanh toán thành công (mô phỏng). Cảm ơn bạn!');
+                clearCart();
+                navigate('/');
+            };
+
+            return (
+                <main className="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-desktop">
+                    <header className="mb-8">
+                        <h1 className="font-headline-lg text-headline-lg text-primary mb-2 uppercase italic font-black">Giỏ hàng của bạn</h1>
+                        <p className="text-on-surface-variant">Bạn có {count} sản phẩm trong giỏ.</p>
+                    </header>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div className="lg:col-span-2 space-y-6">
+                            <div className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30">
+                                {productsInCart.length === 0 && <div className="text-center text-on-surface-variant py-12">Giỏ hàng trống.</div>}
+                                {productsInCart.map(it => (
+                                    <div key={it.id} className="flex items-center gap-4 mb-4">
+                                        <img src={it.product ? it.product.image : ''} className="w-24 h-28 object-cover rounded-lg" />
+                                        <div className="flex-1">
+                                            <div className="flex justify-between items-start">
+                                                <div>
+                                                    <h3 className="font-bold">{it.product ? it.product.name : ''}</h3>
+                                                    <div className="text-sm text-on-surface-variant">{it.product ? it.product.brand : ''} • {it.product ? it.product.category : ''}</div>
+                                                </div>
+                                                <div className="font-bold text-lg">{it.product ? it.product.priceText : ''}</div>
+                                            </div>
+                                            <div className="mt-3 flex items-center gap-3">
+                                                <button onClick={() => setQuantity(it.id, it.quantity - 1)} className="px-3 py-1 border rounded">-</button>
+                                                <div className="px-4">{it.quantity}</div>
+                                                <button onClick={() => setQuantity(it.id, it.quantity + 1)} className="px-3 py-1 border rounded">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30">
+                                <h3 className="font-bold mb-4">Thông tin giao hàng</h3>
+                                <form onSubmit={handleCheckout} className="space-y-4">
+                                    <input value={form.fullName} onChange={e => setForm({ ...form, fullName: e.target.value })} placeholder="Họ và tên" className="w-full p-3 border rounded" />
+                                    {errors.fullName && <div className="text-red-500 text-sm">{errors.fullName}</div>}
+                                    <input value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="Email" className="w-full p-3 border rounded" />
+                                    {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
+                                    <input value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="Số điện thoại" className="w-full p-3 border rounded" />
+                                    {errors.phone && <div className="text-red-500 text-sm">{errors.phone}</div>}
+                                    <input value={form.address} onChange={e => setForm({ ...form, address: e.target.value })} placeholder="Địa chỉ giao hàng" className="w-full p-3 border rounded" />
+                                    {errors.address && <div className="text-red-500 text-sm">{errors.address}</div>}
+
+                                    <div className="flex items-center gap-4">
+                                        <label className="flex items-center gap-2"><input type="radio" name="shipping" checked={shipping === 'standard'} onChange={() => setShipping('standard')} /> Giao tiêu chuẩn</label>
+                                        <label className="flex items-center gap-2"><input type="radio" name="shipping" checked={shipping === 'express'} onChange={() => setShipping('express')} /> Giao nhanh</label>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="font-bold mb-2">Phương thức thanh toán</h4>
+                                        <select value={payment} onChange={e => setPayment(e.target.value)} className="w-full p-3 border rounded">
+                                            <option value="credit_card">Thẻ tín dụng</option>
+                                            <option value="bank_transfer">Chuyển khoản</option>
+                                            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                                        </select>
+                                    </div>
+
+                                    {payment === 'credit_card' && (
+                                        <div className="space-y-2">
+                                            <input value={form.cardNumber} onChange={e => setForm({ ...form, cardNumber: e.target.value })} placeholder="Số thẻ" className="w-full p-3 border rounded" />
+                                            {errors.cardNumber && <div className="text-red-500 text-sm">{errors.cardNumber}</div>}
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <input value={form.expiryDate} onChange={e => setForm({ ...form, expiryDate: e.target.value })} placeholder="MM/YY" className="p-3 border rounded" />
+                                                <input value={form.cvv} onChange={e => setForm({ ...form, cvv: e.target.value })} placeholder="CVV" className="p-3 border rounded" />
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div className="flex gap-2">
+                                        <input value={promo} onChange={e => setPromo(e.target.value)} placeholder="Mã giảm giá" className="p-3 border rounded" />
+                                        <button type="button" onClick={applyPromo} className="px-4 py-3 bg-primary text-white rounded">Áp dụng</button>
+                                    </div>
+
+                                    <div className="flex justify-between items-center mt-4">
+                                        <div>
+                                            <div className="text-sm text-on-surface-variant">Tạm tính</div>
+                                            <div className="font-bold text-xl">{subtotal.toLocaleString('vi-VN')}đ</div>
+                                        </div>
+                                        <button type="submit" className="bg-primary text-white px-6 py-3 rounded">Thanh toán</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <aside className="space-y-6">
+                            <div className="bg-surface-container-low p-6 rounded-2xl border border-outline-variant/30">
+                                <h4 className="font-bold mb-2">Tóm tắt đơn hàng</h4>
+                                <div className="flex justify-between"><span>Tạm tính</span><span>{subtotal.toLocaleString('vi-VN')}đ</span></div>
+                                <div className="flex justify-between mt-2"><span>Phí vận chuyển</span><span>{shipping === 'standard' ? '50.000đ' : '120.000đ'}</span></div>
+                                <div className="flex justify-between mt-2"><span>Chiết khấu</span><span>{discount ? `${(discount*100).toFixed(0)}%` : '0'}</span></div>
+                                <div className="border-t mt-4 pt-4 flex justify-between font-bold">Tổng cộng <span>{(subtotal - subtotal * discount + (shipping === 'standard' ? 50000 : 120000)).toLocaleString('vi-VN')}đ</span></div>
+                            </div>
+                        </aside>
+                    </div>
+                    <Footer />
+                </main>
+            );
+        };
+
+        // --- App Wrapper ---
+
+        const App = () => {
+            const location = useLocation();
+
+            // Scroll to top on route change
+            useEffect(() => {
+                window.scrollTo(0, 0);
+            }, [location]);
+
+            return (
+                <div className="min-h-screen flex flex-col">
+                    {/* Only show Navbar if not on login or register page */}
+                    {location.pathname !== '/login' && location.pathname !== '/register' && <Navbar />}
+                    <div className="flex-grow">
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/about" element={<AboutPage />} />
+                            <Route path="/register" element={<RegisterPage />} />
+                            <Route path="/product/:id" element={<ProductDetail />} />
+                            <Route path="/chitietbaiviet/:id" element={<ArticleDetailPage />} />
+                            <Route path="/blog" element={<BlogPage />} />
+                            <Route path="/products" element={<ProductsPage />} />
+                            <Route path="/cart" element={<CartPage />} />
+                            <Route path="/promotions" element={<PromotionsPage />} />
+                            <Route path="/contact" element={<ContactPage />} />
+                            <Route path="/login" element={<LoginPage />} />
+                        </Routes>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(
+            <MemoryRouter>
+                <CartProvider>
+                    <App />
+                </CartProvider>
+            </MemoryRouter>
+        );
+    </script>
+</body>
+</html>
